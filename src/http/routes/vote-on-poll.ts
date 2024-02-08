@@ -42,7 +42,7 @@ export async function voteOnPoll(app: FastifyInstance){
           }
         })
 
-        await redis.incrby(pollId, -1, userPreviousVoteOnPoll.pollOptionId);
+        await redis.zincrby(pollId, -1, userPreviousVoteOnPoll.pollOptionId);
       } else if (userPreviousVoteOnPoll) {
         return reply.status(400).send({ message: "You already voted on this poll!" })
       }
