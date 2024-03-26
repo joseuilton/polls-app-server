@@ -14,7 +14,7 @@ const host = ("RENDER" in process.env) ? "0.0.0.0" : "localhost";
 
 app.register(cors, {
   credentials: true,
-  origin: process.env.NODE_ENV === "development" ? "http://localhost:3000" : "*"
+  origin: process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.ORIGIN_URL
 });
 app.register(cookie, {
   secret: "polls-app",
