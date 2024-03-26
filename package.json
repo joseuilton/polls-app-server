@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "20"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch ./src/http/server.ts"
+    "dev": "NODE_ENV=development tsx watch ./src/http/server.ts",
+    "build": "tsup ./src/http/server.ts",
+    "start": "node ./dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +18,7 @@
   "devDependencies": {
     "@types/node": "^20.11.16",
     "prisma": "^5.9.1",
+    "tsup": "^8.0.2",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },

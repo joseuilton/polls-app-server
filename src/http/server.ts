@@ -12,7 +12,7 @@ const app = fastify();
 
 app.register(cors, {
   credentials: true,
-  origin: "http://localhost:3000"
+  origin: process.env.NODE_ENV === "development" ? "http://localhost:3000" : "*"
 });
 app.register(cookie, {
   secret: "polls-app",
@@ -29,6 +29,6 @@ app.register(getPoll);
 app.register(voteOnPoll);
 app.register(pollResults);
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: Number(process.env.PORT) || 3333 }).then(() => {
   console.log("HTTP server running!");
 })

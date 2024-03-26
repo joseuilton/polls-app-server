@@ -2,7 +2,9 @@ type Message = { pollOptionId: string; votes: number; };
 type Subscriber = (message: Message) => void;
 
 class VotingPubSub {
-  private channels: Record<string, Subscriber[]> = [];
+  constructor(
+    private channels: Record<string, Subscriber[]> = {}
+  ) {}
 
   subscribe(pollId: string, subscriber: Subscriber) {
     if (!this.channels[pollId]) {
